@@ -35,16 +35,13 @@ http.get(`http://${BRIDGE_IP}/api/${HUE_KEY}/sensors`, (resp) => {
   console.log("Error: " + err.message);
 });
 
-const name = 'node-hello-world';
-const port = '8888';
-const app = new http.Server();
+const express = require('express')
+const app = express()
 
-app.on('request', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.write('Hello World');
-  res.end('\n');
-});
+app.get('/', function (req, res) {
+  res.send('Hello World!')
+})
 
-app.listen(port, () => {
-  console.log(`${name} is listening on port ${port}`);
-});
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})

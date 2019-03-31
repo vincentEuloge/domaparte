@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/vincentEuloge/domaparte/issues"
   },
-  "homepage": "https://github.com/vincentEuloge/domaparte#readme"
+  "homepage": "https://github.com/vincentEuloge/domaparte#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
