@@ -1,5 +1,5 @@
 const http = require('http');
-const {BRIDGE_IP, HUE_KEY} = require("./domaparte.conf.json");
+/*const {BRIDGE_IP, HUE_KEY} = require("./domaparte.conf.json");
 
 
 http.get(`http://${BRIDGE_IP}/api/${HUE_KEY}/sensors`, (resp) => {
@@ -33,7 +33,7 @@ http.get(`http://${BRIDGE_IP}/api/${HUE_KEY}/sensors`, (resp) => {
 
 }).on("error", (err) => {
   console.log("Error: " + err.message);
-});
+});*/
 
 const express = require('express')
 const app = express()
