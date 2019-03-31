@@ -37,11 +37,15 @@ http.get(`http://${BRIDGE_IP}/api/${HUE_KEY}/sensors`, (resp) => {
 
 const express = require('express')
 const app = express()
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(port, function () {
+  console.log(`Example app listening on port ${port]!`)
 })
