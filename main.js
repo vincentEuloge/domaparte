@@ -42,9 +42,8 @@ if (port == null || port == "") {
   port = 8000;
 }
 
-const count = 0;
 app.get('/', function (req, res) {
-    res.send(`Hello World! ${count}`);
+    res.send("Hello poupette!");
 })
 
 app.listen(port, function () {
