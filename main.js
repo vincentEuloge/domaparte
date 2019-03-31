@@ -44,9 +44,7 @@ if (port == null || port == "") {
 
 const count = 0;
 app.get('/', function (req, res) {
-  setInterval(() => {
     res.send(`Hello World! ${count}`);
-  }, 1000);
 })
 
 app.listen(port, function () {
