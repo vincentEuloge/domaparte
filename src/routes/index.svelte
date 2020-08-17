@@ -32,15 +32,43 @@
 	}
 </style>
 
+<script>
+	import { onMount } from 'svelte';
+	import LineChart from '../components/LineChart.svelte';
+
+	let temperaturesData = getTemperatures();
+
+	async function getTemperatures() {
+		try{
+			const res = await fetch(
+				'api/get-temperatures.json',
+				{method: 'GET', headers: {'Content-Type': 'application/json'}}
+			);
+			const data = await res.json();
+
+			if (res.status === 200) {
+				temperaturesData = data;
+			}
+		}catch(err){
+    	}
+		
+	};		
+</script>
+
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Domaparte</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<h1>Welcome poupette!</h1>
 
 <figure>
 	<img alt='Success Kid' src='successkid.jpg'>
-	<figcaption>Have fun with Sapper!</figcaption>
 </figure>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+{#await temperaturesData}
+	<p>...waiting</p>
+{:then number}
+	<LineChart title="Temperatures extérieur" data="{temperaturesData}"/>
+{:catch error}
+	<p style="color: red">{error.message}</p>
+{/await}
