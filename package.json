@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/vincentEuloge/domaparte#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "dotenv": "^8.2.0",
+    "express": "4.16.4",
+    "node-fetch": "^2.6.0"
   }
 }
