@@ -11,8 +11,8 @@ export async function get(req, res, next) {
         const json = await response.json();
 
         const options = {year: "numeric", month: "numeric", day: "numeric",
-           hour: "numeric", minute: "numeric", second: "numeric"};
-        const dateFormat = new Intl.DateTimeFormat("fr-FR", options);
+           hour: "numeric", minute: "numeric", second: "numeric", timeZone: 'Europe/Paris'};
+        const dateFormat = new Intl.DateTimeFormat("default", options);
 
         const result = json
             .values
