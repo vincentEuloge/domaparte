@@ -18,7 +18,7 @@ export async function get(req, res, next) {
             .values
             .map(([date,,,,,, value]) => {
                 const [
-                    { value: year },,{ value: month },,{ value: day },,{ value: hour },,{ value: minute },,{ value: second }
+                    { value: day },,{ value: month },,{ value: year },,{ value: hour },,{ value: minute },,{ value: second }
                 ] = dateFormat.formatToParts(new Date(date)) 
                 return {value, date: `${year}-${month}-${day} ${hour}:${minute}:${second}`}
             })
