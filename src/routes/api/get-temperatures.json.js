@@ -12,12 +12,15 @@ export async function get(req, res, next) {
 
         const options = {year: "numeric", month: "numeric", day: "numeric",
            hour: "numeric", minute: "numeric", second: "numeric", timeZone: 'Europe/Paris'};
-        const dateFormat = new Intl.DateTimeFormat("default", options);
+        const dateFormat = new Intl.DateTimeFormat("fr-FR", options);
 
         const result = json
             .values
             .map(([date,,,,,, value]) => {
-                return {value, date: dateFormat.format(new Date(date))}
+                const [
+                    { value: year },,{ value: month },,{ value: day },,{ value: hour },,{ value: minute },,{ value: second }
+                ] = dateFormat.formatToParts(new Date(date)) 
+                return {value, date: `${year}-${month}-${day} ${hour}:${minute}:${second}`}
             })
 
         res.writeHead(200, {
