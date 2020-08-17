@@ -6,14 +6,19 @@ config();
 const TEMPERATURES_API_URL = process.env.TEMPERATURES_API_URL || '';
 
 export async function get(req, res, next) {
-    console.log("ask info")
     try{
         const response = await fetch(TEMPERATURES_API_URL);
         const json = await response.json();
+
+        const options = {year: "numeric", month: "numeric", day: "numeric",
+           hour: "numeric", minute: "numeric", second: "numeric"};
+        const dateFormat = new Intl.DateTimeFormat("fr-FR", options);
+
         const result = json
             .values
-            .filter(([sensorName]) => sensorName === "capteur inutilisé")
-            .map(([, value, date]) => ({value, date: date.substr(0,19)}));
+            .map(([date,,,,,, value]) => {
+                return {value, date: dateFormat.format(new Date(date))}
+            })
 
         res.writeHead(200, {
             'Content-Type': 'application/json'
@@ -21,7 +26,7 @@ export async function get(req, res, next) {
     
         res.end(JSON.stringify(result));
     }catch(err){
-
+        console.log(err)
     }
     
 }
