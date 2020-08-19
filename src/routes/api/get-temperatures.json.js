@@ -10,17 +10,38 @@ export async function get(req, res, next) {
         const response = await fetch(TEMPERATURES_API_URL);
         const json = await response.json();
 
-        const options = {year: "numeric", month: "numeric", day: "numeric",
-           hour: "numeric", minute: "numeric", second: "numeric", timeZone: 'Europe/Paris'};
-        const dateFormat = new Intl.DateTimeFormat("fr-FR", options);
+        const dateFormat = new Intl.DateTimeFormat(
+            "fr-FR",
+            {
+                year: "numeric",
+                month: "numeric",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+                timeZone: 'Europe/Paris'
+            }
+        );
 
         const result = json
             .values
-            .map(([date,,,,,, value]) => {
+            .map(([date,,kitchenTemp,,entranceTemp,, outsideTemp]) => {
+
                 const [
-                    { value: day },,{ value: month },,{ value: year },,{ value: hour },,{ value: minute },,{ value: second }
+                    { value: day },,
+                    { value: month },,
+                    { value: year },,
+                    { value: hour },,
+                    { value: minute },,
+                    { value: second }
                 ] = dateFormat.formatToParts(new Date(date)) 
-                return {value, date: `${year}-${month}-${day} ${hour}:${minute}:${second}`}
+
+                return {
+                    outsideTemp,
+                    entranceTemp,
+                    kitchenTemp,
+                    date: `${year}-${month}-${day} ${hour}:${minute}:${second}`
+                }
             })
 
         res.writeHead(200, {
