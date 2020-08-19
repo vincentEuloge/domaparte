@@ -33,7 +33,6 @@
 </style>
 
 <script>
-	import { onMount } from 'svelte';
 	import LineChart from '../components/LineChart.svelte';
 
 	let temperaturesData = getTemperatures();

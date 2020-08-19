@@ -13,12 +13,6 @@
     } from "d3";
 
     export let title;
-    /* data describes an array of objects structured to describe a date and a value
-        {
-            date,
-            value
-        }
-        */
     export let data;
 
     // size of the svg
@@ -88,12 +82,6 @@
     // variable describing the tooltip
     // the idea is to assign a data point to this variable
     let tooltip = null;
-
-    // subset of the input data delimited by the data points describing an arbitrary start and end
-    // the idea is to highlight the specific area through a different visual (in this instance a repeating linear gradient)
-    const highlightStart = data.findIndex(d => d.start);
-    const highlightEnd = data.findIndex(d => d.end);
-    const highlight = data.slice(highlightStart, highlightEnd + 1);
 </script>
 
 <style>
@@ -101,7 +89,6 @@
       width: 100%;
       height: auto;
       display: block;
-      color: hsl(200, 95%, 45%);
     }
 </style>
 
