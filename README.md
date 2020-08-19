@@ -12,9 +12,9 @@ In development, the first time build the image, and run it:
 For information we open port 3000 for serve the application and port 10000 for rollup auto reload
 
 next, inside the container:
-    npm install
-    npm run dev
-    open your favorite browser on localhost:3000
-    voilà !
+  - npm install
+  - npm run dev
+  - open your favorite browser on localhost:3000
+  - voilà !
 
 If you don't want to use docker, just look in the dockerfile to know which node version is required, but you may have some surprises, because the windows and the linux date management are not the same, and we use Dates with temperature
