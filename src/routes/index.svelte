@@ -68,7 +68,7 @@
 {#await temperaturesData}
 	<p>...waiting</p>
 {:then number}
-	<LineChart title="Temperatures extérieur" data="{temperaturesData}"/>
+	<LineChart title="Temperature extérieur" data="{temperaturesData}"/>
 {:catch error}
 	<p style="color: red">{error.message}</p>
 {/await}
