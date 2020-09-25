@@ -46,7 +46,7 @@
 			const data = await res.json();
 
 			if (res.status === 200) {
-				temperaturesData = data.slice(-100);
+				temperaturesData = data.slice(-1000);
 			}
 		}catch(err){
     	}
