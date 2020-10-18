@@ -42,7 +42,7 @@ export async function get(req, res, next) {
 
         const result = data
             .values
-            .map(([date,,kitchenTemp,,entranceTemp,, outsideTemp]) => {
+            .map(([date,,kitchenTemp,,entranceTemp,, outsideTemp,, couloirTemp]) => {
 
                 // The date have to be normalize (we want paris timezoned date)
                 const {day, month, year, hour, minute, second} = getDateFormatedParts(new Date(date));
@@ -51,6 +51,7 @@ export async function get(req, res, next) {
                     outsideTemp,
                     entranceTemp,
                     kitchenTemp,
+                    couloirTemp,
                     date: `${year}-${month}-${day} ${hour}:${minute}:${second}`
                 }
             })
