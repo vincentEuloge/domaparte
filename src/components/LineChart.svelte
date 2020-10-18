@@ -57,6 +57,11 @@
       .y(d => yScale(d.kitchenTemp))
       .curve(curveCatmullRom);
 
+    const couloirTempLine = d3Line()
+      .x(d => xScale(parseTime(d.date)))
+      .y(d => yScale(d.couloirTemp))
+      .curve(curveCatmullRom);
+
     // points highlighted through circle elements
     // in this instance the first and last
     const points = [0, data.length - 1];
@@ -124,6 +129,7 @@
                 <path fill="none" stroke="blue" stroke-width="1" d="{outsideTempLine(data)}" />
                 <path fill="none" stroke="red" stroke-width="1" d="{entranceTempLine(data)}" />
                 <path fill="none" stroke="green" stroke-width="1" d="{kitchenTempLine(data)}" />
+                <path fill="none" stroke="orange" stroke-width="1" d="{couloirTempLine(data)}" />
             </g>
 
             <!-- tooltip described with a text, circle, and a line connecting the data point vertically to the x axis -->
