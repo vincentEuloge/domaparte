@@ -38,7 +38,7 @@
 
     // vertically  consider the input values
     const yScale = scaleLinear()
-      .domain([min(data, d => d.outsideTemp) - 200, max(data, d => d.outsideTemp) + 1000])
+      .domain([min(data, d => d.outsideTemp) - 200, max(data, d => d.outsideTemp) + 2200])
       .range([height, 0]);
 
     // line function mapping the date and value in the svg
@@ -78,7 +78,7 @@
 
     // "ticks" for the y-axis
     // the idea is to include 100 values, up to the maximum value
-    const maxValue = max(data, d => d.outsideTemp) + 1000;
+    const maxValue = max(data, d => d.outsideTemp) + 2200;
     const yTicks = 100;
     const yAxis = Array(Math.floor(maxValue / yTicks))
       .fill()
