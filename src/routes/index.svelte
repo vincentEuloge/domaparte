@@ -58,7 +58,8 @@
 	<title>Domaparte</title>
 </svelte:head>
 
-<h1>Welcome poupette!</h1>
+<h1>Welcome to Domaparte!</h1>
+<h3>A simple side project with svelte/sapper</h3>
 
 <figure>
 	<img alt='Success Kid' src='successkid.jpg'>
