@@ -6,8 +6,8 @@ It's easier to have Docker to run this project
 If you are on windows, like me, I advise you to use docker directly in a linux distribution (ubuntu for me) via wsl2
 In development, the first time build the image, and run it:
 
-  - docker build -f Dockerfile.dev -t domaparte/dev .
-  - docker run -p 3000:3000 -p 10000:10000 -v $(pwd):/app -it domaparte/dev sh
+  - docker build -f Dockerfile --target development -t domaparte/app:development .
+  - docker run --init --rm -p 3000:3000 -p 10000:10000 -v $(pwd):/app -it domaparte/app:development sh
 
 For information we open port 3000 for serve the application and port 10000 for rollup auto reload
 
