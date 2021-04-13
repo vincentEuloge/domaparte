@@ -1,4 +1,5 @@
 build:
   docker:
-    web: Dockerfile
-    target: production
+    web: 
+      dockerfile: Dockerfile
+      target: production
